@@ -7,7 +7,6 @@ import (
 	"testing"
 
 	"github.com/grafana/xk6-sql/sqltest"
-	"github.com/stretchr/testify/require"
 
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
@@ -16,6 +15,7 @@ import (
 //go:embed testdata/script.js
 var script string
 
+// adapted from https://developers.ascendcorp.com/how-to-use-testcontainers-for-go-with-oracle-db-4d0b12fbaffe
 func TestIntegration(t *testing.T) { //nolint:paralleltest
 	if testing.Short() {
 		t.Skip()
