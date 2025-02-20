@@ -26,8 +26,9 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 	}
 
 	ctx := context.Background()
-	genericContainerReq := testcontainers.GenericContainerRequest{
-		Image: "gvenzl/oracle-free:latest",
+
+	req := testcontainers.ContainerRequest{
+		Image:        "gvenzl/oracle-free:latest",
 		ExposedPorts: []string{"1521/tcp"},
 		Env: map[string]string{
 			"ORACLE_PASSWORD": "mypassword",
@@ -35,6 +36,18 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		WaitingFor: wait.ForLog("DATABASE IS READY TO USE!").WithStartupTimeout(time.Minute * 5),
 	}
 
+	genericContainerReq := testcontainers.GenericContainerRequest{
+		ContainerRequest: req,
+		Started:          true,
+	}
+
+	opt := WithScripts(filepath.Join("testdata", "1_create_user.sql"), filepath.Join("testdata", "2_create_data_model.sh"),
+		filepath.Join("testdata", "create_data_model.sql"))
+	if err := opt.Customize(&genericContainerReq); err != nil {
+		t.Error(err)
+	}
+
+	// Create a new Oracle DB container
 	oracleContainer, err := testcontainers.GenericContainer(ctx, genericContainerReq)
 
 	if err != nil {
