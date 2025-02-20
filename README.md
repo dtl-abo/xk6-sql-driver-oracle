@@ -1,6 +1,6 @@
 # xk6-sql-driver-oracle
 
-Database driver extension for [xk6-sql](https://github.com/grafana/xk6-sql) k6 extension to support Oracle database using the [go_ora](https://github.com/sijms/go-ora) library.  Created to avoid client library installs needed by this [oracle](https://github.com/stefnedelchevbrady/xk6-sql-with-oracle) implementation (which used [godror](https://github.com/godror/godror).)
+Database driver extension for [xk6-sql](https://github.com/grafana/xk6-sql) k6 extension to support Oracle database using the [go-ora](https://github.com/sijms/go-ora) library.  Created to avoid client library installs needed by this [oracle](https://github.com/stefnedelchevbrady/xk6-sql-with-oracle) implementation (which used [godror](https://github.com/godror/godror).)
 
 ## Example
 
