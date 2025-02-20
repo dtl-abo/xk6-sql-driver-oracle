@@ -30,10 +30,10 @@ jobs:
 
         # Provide healthcheck script options for startup
         options: >-
-          --health-cmd healthcheck.sh
+          --health-cmd="echo 'SELECT 1 FROM DUAL;' | sqlplus -S system/mypassword@//localhost:1521/FREEPDB1"
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 10
+          --health-retries 100
 
     steps:
       - name: Checkout code
@@ -49,8 +49,8 @@ jobs:
       - name: Test
         run: |
           # Wait for Oracle to be ready
-          echo "Waiting for Oracle to start..."
-          sleep 120 # Increase if necessary
+          # echo "Waiting for Oracle to start..."
+          # sleep 120 # Increase if necessary
           # debug dns issue
-          ping oracle -c 4
+          # ping oracle -c 4
           make test
