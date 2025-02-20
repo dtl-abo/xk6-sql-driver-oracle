@@ -60,7 +60,7 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		t.Error(err)		
 	}
 
-	fmt.PrintLn(host,":" mappedPort.Port())
+	fmt.PrintLn(host,":", mappedPort.Port())
 
 	// jdbcDescriptionString := fmt.Sprintf(`(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=%s)(PORT=%s))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))`,
 	// 	host, mappedPort.Port())
