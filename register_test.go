@@ -5,6 +5,8 @@ import (
 	_ "embed"
 	"runtime"
 	"testing"
+	"time"
+	"fmt"
 
 	"github.com/grafana/xk6-sql/sqltest"
 
