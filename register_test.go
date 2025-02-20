@@ -26,15 +26,17 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 	}
 
 	ctx := context.Background()
-	containerRequest := testcontainers.ContainerRequest{
+	genericContainerReq := testcontainers.GenericContainerRequest{
 		Image: "gvenzl/oracle-free:latest",
 		ExposedPorts: []string{"1521/tcp"},
 		Env: map[string]string{
 			"ORACLE_PASSWORD": "mypassword",
 		},
-		WaitingFor: wait.ForLog("DATABASE IS READY TO USE!").WithStartupTimeout(5000000000),
+		WaitingFor: wait.ForLog("DATABASE IS READY TO USE!").WithStartupTimeout(time.Minute * 5),
 	}
-	oracleContainer, err := testcontainers.GenericContainer(ctx, containerRequest, genericContainerOptions...)
+
+	oracleContainer, err := testcontainers.GenericContainer(ctx, genericContainerReq)
+
 	if err != nil {
 		t.Fatalf("Failed to create Oracle DB container: %v", err)
 	}
