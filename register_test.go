@@ -69,7 +69,7 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 	// ... Use the JDBC String to connect to the Oracle DB in your tests here ...
 	// ... And then run your tests ...
 
-	sqltest.RunScript(t, "oracle", "oracle://system:mypassword@localhost:1521/FREEPDB1", script)
+	sqltest.RunScript(t, "oracle", "oracle://system:mypassword@127.0.0.1:1521/FREEPDB1", script)
 
 	// Stop the container after tests
 	defer oracleContainer.Terminate(ctx)
