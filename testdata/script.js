@@ -1,4 +1,4 @@
-const db = sql.open(driver, "oracle://system:mypassword@oracle:1521/FREEPDB1");
+const db = sql.open(driver, "oracle://system:mypassword@localhost:1521/FREEPDB1");
 
 db.exec("CREATE TABLE IF NOT EXISTS test_table (id number(100), name VARCHAR(200) NOT NULL, value VARCHAR(200));");
 
