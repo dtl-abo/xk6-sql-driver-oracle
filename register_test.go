@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 	"time"
-	// "fmt"
+	"fmt"
 
 	"github.com/grafana/xk6-sql/sqltest"
 
@@ -60,7 +60,7 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		t.Error(err)		
 	}
 
-	t.Log("http://%s:%s", host, mappedPort.Port())
+	fmt.PrintLn(host,":" mappedPort.Port())
 
 	// jdbcDescriptionString := fmt.Sprintf(`(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=%s)(PORT=%s))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))`,
 	// 	host, mappedPort.Port())
