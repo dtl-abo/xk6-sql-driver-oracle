@@ -47,4 +47,10 @@ jobs:
       - name: Build
         run: make build
       - name: Test
-        run: make test
+        run: |
+          # Wait for Oracle to be ready
+          echo "Waiting for Oracle to start..."
+          sleep 120 # Increase if necessary
+          # debug dns issue
+          ping oracle -c 4
+          make test
