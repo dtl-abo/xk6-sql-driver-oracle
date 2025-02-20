@@ -41,12 +41,6 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		Started:          true,
 	}
 
-	opt := WithScripts(filepath.Join("testdata", "1_create_user.sql"), filepath.Join("testdata", "2_create_data_model.sh"),
-		filepath.Join("testdata", "create_data_model.sql"))
-	if err := opt.Customize(&genericContainerReq); err != nil {
-		t.Error(err)
-	}
-
 	// Create a new Oracle DB container
 	oracleContainer, err := testcontainers.GenericContainer(ctx, genericContainerReq)
 
