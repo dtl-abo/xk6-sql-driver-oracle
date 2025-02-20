@@ -50,16 +50,17 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		t.Fatalf("Failed to create Oracle DB container: %v", err)
 	}
 
-	// host, err := oracleContainer.Host(ctx)
-	// if err != nil {
-	// 	t.Error(err)
-	// }
+	host, err := oracleContainer.Host(ctx)
+	if err != nil {
+		t.Error(err)
+	}
 
-	// mappedPort, err := oracleContainer.MappedPort(ctx, "1521/tcp")
-	// if err != nil {
-	// 	t.Error(err)
-		
-	// }
+	mappedPort, err := oracleContainer.MappedPort(ctx, "1521/tcp")
+	if err != nil {
+		t.Error(err)		
+	}
+
+	t.Log("http://%s:%s", host, mappedPort.Port())
 
 	// jdbcDescriptionString := fmt.Sprintf(`(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=%s)(PORT=%s))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))`,
 	// 	host, mappedPort.Port())
