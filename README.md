@@ -1,6 +1,6 @@
 # xk6-sql-driver-oracle
 
-Database driver extension for [xk6-sql](https://github.com/grafana/xk6-sql) k6 extension to support RamSQL database.
+Database driver extension for [xk6-sql](https://github.com/grafana/xk6-sql) k6 extension to support Oracle database.
 
 ## Example
 
