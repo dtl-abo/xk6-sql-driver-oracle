@@ -64,12 +64,12 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 	// jdbcDescriptionString := fmt.Sprintf(`(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=%s)(PORT=%s))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))`,
 	// 	host, mappedPort.Port())
 
-	jdbcDescriptionString := fmt.Sprintf(`oracle://system:mypassword@%s:%s/FREEPDB1)`, host, mappedPort.Port())
+	// jdbcDescriptionString := fmt.Sprintf(`oracle://system:mypassword@%s:%s/FREEPDB1)`, host, mappedPort.Port())
 
 	// ... Use the JDBC String to connect to the Oracle DB in your tests here ...
 	// ... And then run your tests ...
 
-	sqltest.RunScript(t, "oracle", jdbcDescriptionString, script)
+	sqltest.RunScript(t, "oracle", "oracle://system:mypassword@localhost:1521/FREEPDB1", script)
 
 	// Stop the container after tests
 	defer oracleContainer.Terminate(ctx)
