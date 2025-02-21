@@ -3,8 +3,12 @@ const db = sql.open(driver, connection);
 
 db.exec("CREATE TABLE IF NOT EXISTS test_table (id number(37), name VARCHAR(200) NOT NULL, value VARCHAR(200));");
 
+const insertQuery=`INSERT INTO test_table (id, name, value) VALUES (:1, :2, :3)`
 for (let i = 1; i < 6; i++) {
-  db.exec("INSERT INTO test_table (id, name, value) VALUES (i, 'name-" + i + "', 'value-" + i + "');");
+  col1 = i;
+  col2 = 'name-' + i;
+  col3 = 'value-' + i;
+  db.exec(insertQuery, col1, col2, col3);
 }
 
 let all_rows = db.query("SELECT * FROM test_table;");
