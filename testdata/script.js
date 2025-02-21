@@ -1,9 +1,9 @@
 // const db = sql.open(driver, "oracle://system:mypassword@localhost:1521/FREEPDB1");
 const db = sql.open(driver, connection);
 
-db.exec("CREATE TABLE IF NOT EXISTS test_table (id number(100), name VARCHAR(200) NOT NULL, value VARCHAR(200));");
+db.exec("CREATE TABLE IF NOT EXISTS test_table (id number(37), name VARCHAR(200) NOT NULL, value VARCHAR(200));");
 
-for (let i = 0; i < 5; i++) {
+for (let i = 1; i < 6; i++) {
   db.exec("INSERT INTO test_table (id, name, value) VALUES (i, 'name-" + i + "', 'value-" + i + "');");
 }
 
