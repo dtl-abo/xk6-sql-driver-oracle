@@ -3,10 +3,10 @@ package oracle
 import (
 	"context"
 	_ "embed"
+	"fmt"
 	"runtime"
 	"testing"
 	"time"
-	"fmt"
 
 	"github.com/grafana/xk6-sql/sqltest"
 
@@ -57,10 +57,10 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 
 	mappedPort, err := oracleContainer.MappedPort(ctx, "1521/tcp")
 	if err != nil {
-		t.Error(err)		
+		t.Error(err)
 	}
 
-	fmt.Println(host,":", mappedPort.Port())
+	fmt.Println(host, ":", mappedPort.Port())
 
 	// jdbcDescriptionString := fmt.Sprintf(`(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=%s)(PORT=%s))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))`,
 	// 	host, mappedPort.Port())
@@ -70,7 +70,7 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 	// ... Use the JDBC String to connect to the Oracle DB in your tests here ...
 	// ... And then run your tests ...
 
-	sqltest.RunScript(t, "oracle", "oracle://system:mypassword@127.0.0.1:1521/FREEPDB1", script)
+	sqltest.RunScript(t, "oracle", "oracle://system:mypassword@127.0.0.1:32769/FREEPDB1", script)
 
 	// Stop the container after tests
 	defer oracleContainer.Terminate(ctx)
