@@ -1,4 +1,4 @@
-module github.com/grafana/xk6-sql-driver-oracle
+module github.com/dtl-abo/xk6-sql-driver-oracle
 
 go 1.22
 
